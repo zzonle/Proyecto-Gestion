@@ -167,6 +167,46 @@ def main():
                     )
                     proyecto_controller.crear_proyecto(nuevo_proyecto)
                     print("Proyecto creado exitosamente.")
+                elif sub_opcion == "3.2":
+                    id = input("Ingrese la ID del proyecto a buscar: ")
+                    proyecto = proyecto_controller.buscar_proyecto_por_id(id)
+                    if proyecto:
+                        print(proyecto)
+                    else:
+                        print("Empleado no encontrado.")
+                elif sub_opcion == "3.3":
+                    id = input("Ingrese la ID del proyecto a modificar: ")
+                    nombre = input("Ingrese el nuevo nombre del proyecto: ")
+                    descripcion = input("Ingrese la nueva descripción del proyecto: ")
+                    fecha_inicio = input("Ingrese la nueva fecha de inicio (YYYY-MM-DD): ")
+                    
+                    proyecto_modificado = Proyecto(
+                        id=id,
+                        nombre=nombre,
+                        descripcion=descripcion,
+                        fecha_inicio= fecha_inicio
+                    ) 
+                    
+                    proyecto_controller.modificar_proyecto(proyecto_modificado)
+                    
+                    if (proyecto_modificado):
+                        print("Proyecto modificado exitosamente.")
+                    else:
+                        print("Proyecto no encontrado.")       
+                elif sub_opcion == "3.4":
+                    id = input("Ingrese la ID del proyecto a eliminar:")
+                       
+                    proyecto = proyecto_controller.eliminar_proyecto(id)
+                    
+                    if proyecto:
+                        print("Proyecto eliminado exitosamente.")
+                    else:
+                        print("Proyecto no encontrado.")
+                elif sub_opcion == "3.5":
+                    break
+                        
+                
+                        
         elif opcion == "4":
             print("Saliendo del sistema...")
             break

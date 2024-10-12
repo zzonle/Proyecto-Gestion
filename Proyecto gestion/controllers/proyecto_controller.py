@@ -29,7 +29,7 @@ class ProyectoController:
         connection.close()
         return proyecto
     
-    def edicion_proyecto(self):
+    def modificar_proyecto(self, Proyecto):
         connection = self.conectar()
         cursor = connection.cursor()
         query = "UPDATE Proyecto SET nombre_proyecto = %s, descripcion_proyecto = %s, fecha_inicio_proyecto = %s WHERE proyecto_id = %s"
@@ -42,7 +42,8 @@ class ProyectoController:
         connection = self.conectar()
         cursor = connection.cursor()
         query = "DELETE FROM Proyecto WHERE proyecto_id = %s"
-        cursor.execute(query, (id))
+        cursor.execute(query, (id,))
         connection.commit()
         cursor.close()
         connection.close()
+
