@@ -4,14 +4,15 @@
 from views.menu import menu_principal, menu_empleado, menu_departamento, menu_proyecto
 from controllers.empleado_controller import EmpleadoController
 from controllers.departamento_controller import DepartamentoController
-from controllers.proyecto_controller import proyecto_controller
+from controllers.proyecto_controller import ProyectoController
 from models.empleado import Empleado
 from models.departamento import Departamento
-from models.proyecto import proyecto
+from models.proyecto import Proyecto
 
 
 empleado_controller = EmpleadoController()
 departamento_controller = DepartamentoController()
+proyecto_controller = ProyectoController()
 
 def main():
     while True:
@@ -158,39 +159,14 @@ def main():
                     nombre = input("Ingrese el nombre del proyecto: ")
                     descripcion = input("Ingrese la descripción del proyecto: ")
                     fecha_inicio = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
-                    proyecto_id = int(input("Ingrese el ID del proyecto: "))
                     
-                    nuevo_proyecto = proyecto(
-                        nombre=nombre, 
-                        descripcion=descripcion, 
-                        fecha_inicio=fecha_inicio, 
-                        proyecto_id=proyecto_id
-                        )
-                    
+                    nuevo_proyecto = Proyecto(
+                        nombre = nombre,
+                        descripcion= descripcion,
+                        fecha_inicio= fecha_inicio
+                    )
                     proyecto_controller.crear_proyecto(nuevo_proyecto)
                     print("Proyecto creado exitosamente.")
-                    
-                elif opcion == "3.2":
-                    proyecto_id = int(input("Ingrese el ID del proyecto a buscar: "))
-                    proyecto = proyecto_controller.buscar_proyecto_por_id(id)
-                    if proyecto:
-                        nombre = input("Ingrese el nuevo nombre del proyecto: ")
-                        descripcion = input("Ingrese la nueva descripción del proyecto: ")
-                        fecha_inicio = input("Ingrese la nueva fecha de inicio (YYYY-MM-DD): ")
-                    
-                        proyecto_modificado = proyecto(
-                            nombre=nombre, 
-                            descripcion=descripcion,
-                            fecha_inicio=fecha_inicio,
-                            proyecto_id=proyecto_id
-                            )
-                        proyecto_controller.modificar_proyecto(proyecto_modificado)
-                        print("Proyecto modificado exitosamente.")
-                    else:
-                        print("Proyecto no encontrado.")
-                    
-                elif opcion == "3.3":
-                    pass
         elif opcion == "4":
             print("Saliendo del sistema...")
             break
