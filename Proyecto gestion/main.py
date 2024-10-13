@@ -102,6 +102,7 @@ def main():
 
                 elif sub_opcion == "1.6":
                     break
+
         elif opcion == "2":
             while True:
                 menu_departamento()
@@ -173,18 +174,16 @@ def main():
                     if proyecto:
                         print(proyecto)
                     else:
-                        print("Empleado no encontrado.")
+                        print("Proyecto no encontrado.")
                 elif sub_opcion == "3.3":
                     id = input("Ingrese la ID del proyecto a modificar: ")
                     nombre = input("Ingrese el nuevo nombre del proyecto: ")
                     descripcion = input("Ingrese la nueva descripción del proyecto: ")
-                    fecha_inicio = input("Ingrese la nueva fecha de inicio (YYYY-MM-DD): ")
                     
                     proyecto_modificado = Proyecto(
                         id=id,
                         nombre=nombre,
-                        descripcion=descripcion,
-                        fecha_inicio= fecha_inicio
+                        descripcion=descripcion
                     ) 
                     
                     proyecto_controller.modificar_proyecto(proyecto_modificado)
@@ -203,11 +202,31 @@ def main():
                     else:
                         print("Proyecto no encontrado.")
                 elif sub_opcion == "3.5":
+                    empleado_id = input("Ingrese la ID del empleado para agregar al proyecto: ")
+                    proyecto_id = input("Ingrese la ID del proyecto: ")
+                    
+                    proyectoempleado = proyecto_controller.agregar_empleado_proyecto(proyecto_id , empleado_id)
+                    
+                    if proyectoempleado:
+                        print("Empleado o proyecto no encontrados.")
+                    else:
+                        print("Empleado agregado al proyecto exitosamente.")
+                    
+                    
+                elif sub_opcion == "3.6":     
+                    pass
+                elif sub_opcion == "3.7":
+                    proyecto_id = input("Ingrese la ID del proyecto para buscar los empleados: ")
+                    
+                    empleados_proyecto = proyecto_controller.listar_empleados_proyecto(proyecto_id)
+                    print("Empleados del proyecto:")
+                    print(empleados_proyecto)
+                elif sub_opcion == "3.8":
                     break
-                        
-                
-                        
+
         elif opcion == "4":
+            pass                
+        elif opcion == "5":
             print("Saliendo del sistema...")
             break
 

@@ -20,6 +20,7 @@ class Proyecto:
     def get_fecha_inicio(self):
         return self._fecha_inicio
     
+    
     #setters 
     
     def set_id(self, id):
@@ -33,5 +34,4 @@ class Proyecto:
     
     def set_fecha_inicio(self, fecha_inicio):
         self._fecha_inicio = fecha_inicio
-    
     
