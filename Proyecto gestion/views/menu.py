@@ -28,7 +28,7 @@ def menu_proyecto():
     print("3.2 Buscar Proyecto")
     print("3.3 Modificar Proyecto")
     print("3.4 Eliminar Proyecto")
-    print("3.5 Agregar Empleado a Proyecto")
+    print("3.5 Agregar Empleado al Proyecto")
     print("3.6 Remover Empleado de Proyecto")
     print("3.7 Listar Empleados de Proyecto")
     print("3.8 Volver al menu Principal")

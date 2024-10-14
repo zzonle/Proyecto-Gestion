@@ -102,7 +102,6 @@ def main():
 
                 elif sub_opcion == "1.6":
                     break
-
         elif opcion == "2":
             while True:
                 menu_departamento()
@@ -210,11 +209,18 @@ def main():
                     if proyectoempleado:
                         print("Empleado o proyecto no encontrados.")
                     else:
-                        print("Empleado agregado al proyecto exitosamente.")
-                    
-                    
-                elif sub_opcion == "3.6":     
-                    pass
+                        print("Empleado agregado al proyecto exitosamente.")     
+                elif sub_opcion == "3.6":
+                
+                    proyecto_id = int(input("Ingrese la ID del proyecto: "))
+                    empleado_id = int(input("Ingrese la ID del empleado a eliminar del proyecto: "))
+
+                    empleado_eliminado = proyecto_controller.eliminar_empleado_proyecto(proyecto_id, empleado_id)
+
+                    if empleado_eliminado: 
+                        print("Empleado eliminado del proyecto exitosamente.")
+                    else:  
+                        print("Empleado no encontrado en el proyecto.")           
                 elif sub_opcion == "3.7":
                     proyecto_id = input("Ingrese la ID del proyecto para buscar los empleados: ")
                     
@@ -223,7 +229,6 @@ def main():
                     print(empleados_proyecto)
                 elif sub_opcion == "3.8":
                     break
-
         elif opcion == "4":
             pass                
         elif opcion == "5":
