@@ -9,4 +9,44 @@ class RegistroTiempoController:
     def conectar(self):
         return mysql.connector.connect(**self.db_config)
     
+    def crear_registro(self, registro):
+        connection = self.conectar()
+        cursor = connection.cursor()
+        query = ("INSERT INTO registro_tiempo (id, fecha, horas, descripcion, empleado_id, proyecto_id) VALUES (%s,%s,%s,%s,%s);")
+        cursor.execute(query, (registro.get_fecha_inicio(), registro.get_horas_trabajadas(), registro.get_descripcion(), registro.get_empleado_id(), registro.get_proyecto_id()))
+        connection.commit()
+        cursor.close()
+        connection.close()
+    
+    def listar_registro(self):
+        connection = self.conectar()
+        cursor = connection.cursor()
+        query = "select * from registro_tiempo;"
+        cursor.execute(query)
+        registro_tiempos = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return registro_tiempos
+    
+    def buscar_registro(self, id):
+        connection = self.conectar()
+        cursor = connection.cursor()
+        query = "SELECT * FROM Proyecto WHERE proyecto_id = %s"
+        cursor.execute(query, (id,))
+        registro = cursor.fetchone()
+        cursor.close()
+        connection.close()
+        return registro
+    
+    def modificar_registro(self, registro):
+        connection = self.conectar()
+        cursor = connection.cursor()
+        query = "UPDATE registro_tiempo set fecha = %s, hora = %s, empleado_id = %s, proyecto_id = %s where id = %s;"
+        cursor.execute(query(registro.get_fecha_inicio(),registro.get_horas_trabajadas(), registro.get_descripcion(), registro.get_proyecto_id(), registro.get_empleado_id(), registro.get_id()))
+        connection.commit()
+        cursor.close()
+        connection.close()
+
+    def eliminar_registro():
+        pass
     

@@ -1,18 +1,21 @@
 # main.py
 # main.py
 
-from views.menu import menu_principal, menu_empleado, menu_departamento, menu_proyecto
+from views.menu import menu_principal, menu_empleado, menu_departamento, menu_proyecto, menu_registro_tiempo
 from controllers.empleado_controller import EmpleadoController
 from controllers.departamento_controller import DepartamentoController
 from controllers.proyecto_controller import ProyectoController
+from controllers.registrotiempo_controller import RegistroTiempoController
 from models.empleado import Empleado
 from models.departamento import Departamento
 from models.proyecto import Proyecto
+from models.registrotiempo import RegistroTiempo
 
 
 empleado_controller = EmpleadoController()
 departamento_controller = DepartamentoController()
 proyecto_controller = ProyectoController()
+registrotiempo_controller = RegistroTiempoController()
 
 def main():
     while True:
@@ -230,7 +233,44 @@ def main():
                 elif sub_opcion == "3.8":
                     break
         elif opcion == "4":
-            pass                
+            while True:
+                menu_registro_tiempo()
+                sub_opcion = input("Seleccione una opción: ")             
+
+                if sub_opcion == "4.1":
+                    fecha_inicio = input("Ingrese la fecha de inicio (YYYY-MM-DD): ")
+                    horas_trabajadas = float(input("Ingrese las horas trabajadas en (HH-MM-SS): "))
+                    descripcion = input("Ingrese la descripción del registro: ")
+                    empleado_id = input("Ingrese la ID del empleado: ")
+                    proyecto_id = input("Ingrese la ID del proyecto: ")
+                    
+                    nuevo_registro = RegistroTiempo(
+                        fecha_inicio=fecha_inicio,
+                        horas_trabajadas=horas_trabajadas,
+                        descripcion=descripcion,
+                        empleado_id=empleado_id,
+                        proyecto_id=proyecto_id
+                    )
+                    registrotiempo_controller.crear_registro(nuevo_registro)
+                elif sub_opcion == "4.2":
+                    registros = registrotiempo_controller.listar_registro()
+                    for registro in registros:
+                        print(registro)
+                elif sub_opcion == "4.3":
+                    registro_id = input("Ingrese el ID del registro a buscar: ")
+                    registro = registrotiempo_controller.buscar_registro(registro_id)
+                    if registro:
+                        print(registro)
+                    else:
+                        print("Registro no encontrado.")
+                elif sub_opcion == "4.4":
+                    registro_id = input("Ingrese la ID del registro a modificar: ")
+                    
+                elif sub_opcion == "4.5":
+                    pass
+                elif sub_opcion == "4.6":
+                    break
+                
         elif opcion == "5":
             print("Saliendo del sistema...")
             break
