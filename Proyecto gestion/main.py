@@ -252,22 +252,50 @@ def main():
                         proyecto_id=proyecto_id
                     )
                     registrotiempo_controller.crear_registro(nuevo_registro)
+                    if nuevo_registro:
+                        print("Registro creado exitosamente.")
+                    else:
+                        print("Error al crear el registro.")                   
                 elif sub_opcion == "4.2":
                     registros = registrotiempo_controller.listar_registro()
                     for registro in registros:
-                        print(registro)
+                        print(registro)                  
                 elif sub_opcion == "4.3":
                     registro_id = input("Ingrese el ID del registro a buscar: ")
                     registro = registrotiempo_controller.buscar_registro(registro_id)
                     if registro:
                         print(registro)
                     else:
-                        print("Registro no encontrado.")
+                        print("Registro no encontrado.")           
                 elif sub_opcion == "4.4":
                     registro_id = input("Ingrese la ID del registro a modificar: ")
+                    fecha = input("Ingrese la fecha a modificar: ")
+                    proyecto_id = input("Ingrese la ID del proyecto: ")
+                    empleado_id = input("Ingrese la ID del empleado: ")
+                    descripcion = input("Descripcion del registro: ")
+                    hora = float(input("Ingrese la horas del registro: "))
                     
+                    registro_modificado = RegistroTiempo(
+                        id=registro_id,
+                        fecha_inicio=fecha,
+                        horas_trabajadas=hora,
+                        descripcion=descripcion,
+                        empleado_id=empleado_id,
+                        proyecto_id=proyecto_id
+                        )
+                    registrotiempo_controller.modificar_registro(registro_modificado)
+                    if registro_modificado:
+                        print("Registro modificado exitosamente.")
+                    else:
+                        print("Registro no modificado.")
                 elif sub_opcion == "4.5":
-                    pass
+                    id = input("Ingrese el ID del registro a eliminar: ")
+                    registrotiempo_controller.eliminar_registro(id)
+                    
+                    if registrotiempo_controller.eliminar_registro(id):
+                        print("Registro no eliominado.")
+                    else:
+                        print("Registro eliminado exitosamente.")
                 elif sub_opcion == "4.6":
                     break
                 
