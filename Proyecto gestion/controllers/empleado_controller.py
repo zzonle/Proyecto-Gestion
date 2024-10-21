@@ -1,4 +1,3 @@
-# controllers/empleado_controller.py
 import mysql.connector
 from models.empleado import Empleado
 from config.database import db_config  # Importa la configuración de la base de datos

@@ -1,6 +1,3 @@
-# main.py
-# main.py
-
 from views.menu import menu_principal, menu_empleado, menu_departamento, menu_proyecto, menu_registro_tiempo
 from controllers.empleado_controller import EmpleadoController
 from controllers.departamento_controller import DepartamentoController
@@ -198,11 +195,7 @@ def main():
                     id = input("Ingrese la ID del proyecto a eliminar:")
                        
                     proyecto = proyecto_controller.eliminar_proyecto(id)
-                    
-                    if proyecto:
-                        print("Proyecto eliminado exitosamente.")
-                    else:
-                        print("Proyecto no encontrado.")
+                    print("Proyecto eliminado exitosamente.")                    
                 elif sub_opcion == "3.5":
                     empleado_id = input("Ingrese la ID del empleado para agregar al proyecto: ")
                     proyecto_id = input("Ingrese la ID del proyecto: ")
@@ -214,16 +207,11 @@ def main():
                     else:
                         print("Empleado agregado al proyecto exitosamente.")     
                 elif sub_opcion == "3.6":
-                
                     proyecto_id = int(input("Ingrese la ID del proyecto: "))
                     empleado_id = int(input("Ingrese la ID del empleado a eliminar del proyecto: "))
-
-                    empleado_eliminado = proyecto_controller.eliminar_empleado_proyecto(proyecto_id, empleado_id)
-
-                    if empleado_eliminado: 
-                        print("Empleado eliminado del proyecto exitosamente.")
-                    else:  
-                        print("Empleado no encontrado en el proyecto.")           
+                    
+                    proyecto_controller.eliminar_empleado_proyecto(proyecto_id, empleado_id)
+                    print("Empleado eliminado del proyecto exitosamente.")           
                 elif sub_opcion == "3.7":
                     proyecto_id = input("Ingrese la ID del proyecto para buscar los empleados: ")
                     
@@ -290,7 +278,6 @@ def main():
                         print("Registro no modificado.")
                 elif sub_opcion == "4.5":
                     id = input("Ingrese el ID del registro a eliminar: ")
-                    registrotiempo_controller.eliminar_registro(id)
                     
                     if registrotiempo_controller.eliminar_registro(id):
                         print("Registro no eliominado.")

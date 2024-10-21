@@ -1,4 +1,3 @@
-#proyecto.py
 class Proyecto:
     def __init__(self, id = None, nombre = "", descripcion = "", fecha_inicio = ""):
         self._id = id

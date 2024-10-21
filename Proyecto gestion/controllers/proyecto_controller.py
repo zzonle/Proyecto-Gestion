@@ -1,4 +1,3 @@
-#proyecto_controller.py
 import mysql.connector
 from models.proyecto import Proyecto
 from config.database import db_config  
@@ -32,7 +31,7 @@ class ProyectoController:
     def modificar_proyecto(self, Proyecto):
         connection = self.conectar()
         cursor = connection.cursor()
-        query = "UPDATE Proyecto SET nombre_proyecto = %s, descripcion_proyecto = %s fecha_inicio_proyecto = %s, WHERE proyecto_id = %s"
+        query = "UPDATE Proyecto SET nombre_proyecto = %s, descripcion_proyecto = %s, fecha_inicio_proyecto = %s WHERE proyecto_id = %s"
         cursor.execute(query, (Proyecto.get_nombre(), Proyecto.get_descripcion(), Proyecto.get_fecha_inicio() , Proyecto.get_id()))
         connection.commit()
         cursor.close()
@@ -70,7 +69,7 @@ class ProyectoController:
         connection = self.conectar()
         cursor = connection.cursor()
         query = "SELECT E.nombre, P.nombre_proyecto, P.proyecto_id FROM empleado E INNER JOIN empleados_proyecto PxE ON E.id = PxE.empleado_id INNER JOIN proyecto P ON PxE.proyecto_id = P.proyecto_id WHERE P.proyecto_id = %s;"
-        cursor.execute(query, (proyecto_id))
+        cursor.execute(query, (proyecto_id,))
         empleados = cursor.fetchall()
         cursor.close()
         connection.close()
