@@ -45,3 +45,5 @@ class RegistroTiempo:
         
     def set_empleado_id(self, empleado_id):
         self._empleado_id = empleado_id
+        
+    

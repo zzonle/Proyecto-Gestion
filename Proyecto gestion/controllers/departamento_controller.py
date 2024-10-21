@@ -1,5 +1,3 @@
-# controllers/departamento_controller.py
-
 import mysql.connector
 from models.departamento import Departamento
 from config.database import db_config

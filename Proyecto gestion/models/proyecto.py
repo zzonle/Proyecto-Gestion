@@ -1,3 +1,4 @@
+
 class Proyecto:
     def __init__(self, id = None, nombre = "", descripcion = "", fecha_inicio = ""):
         self._id = id
@@ -33,4 +34,5 @@ class Proyecto:
     
     def set_fecha_inicio(self, fecha_inicio):
         self._fecha_inicio = fecha_inicio
+        
     

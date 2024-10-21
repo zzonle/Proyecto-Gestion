@@ -1,8 +1,9 @@
-from views.menu import menu_principal, menu_empleado, menu_departamento, menu_proyecto, menu_registro_tiempo
+from views.menu import menu_principal, menu_empleado, menu_departamento, menu_proyecto, menu_registro_tiempo, menu_exportar_datos
 from controllers.empleado_controller import EmpleadoController
 from controllers.departamento_controller import DepartamentoController
 from controllers.proyecto_controller import ProyectoController
 from controllers.registrotiempo_controller import RegistroTiempoController
+from controllers.exportar_controller import ExportarExcel, ExportarPDF
 from models.empleado import Empleado
 from models.departamento import Departamento
 from models.proyecto import Proyecto
@@ -167,6 +168,7 @@ def main():
                     )
                     proyecto_controller.crear_proyecto(nuevo_proyecto)
                     print("Proyecto creado exitosamente.")
+                
                 elif sub_opcion == "3.2":
                     id = input("Ingrese la ID del proyecto a buscar: ")
                     proyecto = proyecto_controller.buscar_proyecto_por_id(id)
@@ -174,6 +176,7 @@ def main():
                         print(proyecto)
                     else:
                         print("Proyecto no encontrado.")
+                
                 elif sub_opcion == "3.3":
                     id = input("Ingrese la ID del proyecto a modificar: ")
                     nombre = input("Ingrese el nuevo nombre del proyecto: ")
@@ -191,11 +194,13 @@ def main():
                         print("Proyecto modificado exitosamente.")
                     else:
                         print("Proyecto no encontrado.")       
+                
                 elif sub_opcion == "3.4":
                     id = input("Ingrese la ID del proyecto a eliminar:")
                        
                     proyecto = proyecto_controller.eliminar_proyecto(id)
                     print("Proyecto eliminado exitosamente.")                    
+                
                 elif sub_opcion == "3.5":
                     empleado_id = input("Ingrese la ID del empleado para agregar al proyecto: ")
                     proyecto_id = input("Ingrese la ID del proyecto: ")
@@ -206,18 +211,21 @@ def main():
                         print("Empleado o proyecto no encontrados.")
                     else:
                         print("Empleado agregado al proyecto exitosamente.")     
+                
                 elif sub_opcion == "3.6":
                     proyecto_id = int(input("Ingrese la ID del proyecto: "))
                     empleado_id = int(input("Ingrese la ID del empleado a eliminar del proyecto: "))
                     
                     proyecto_controller.eliminar_empleado_proyecto(proyecto_id, empleado_id)
                     print("Empleado eliminado del proyecto exitosamente.")           
+                
                 elif sub_opcion == "3.7":
                     proyecto_id = input("Ingrese la ID del proyecto para buscar los empleados: ")
                     
                     empleados_proyecto = proyecto_controller.listar_empleados_proyecto(proyecto_id)
                     print("Empleados del proyecto:")
                     print(empleados_proyecto)
+                
                 elif sub_opcion == "3.8":
                     break
         elif opcion == "4":
@@ -244,10 +252,12 @@ def main():
                         print("Registro creado exitosamente.")
                     else:
                         print("Error al crear el registro.")                   
+                
                 elif sub_opcion == "4.2":
                     registros = registrotiempo_controller.listar_registro()
                     for registro in registros:
                         print(registro)                  
+                
                 elif sub_opcion == "4.3":
                     registro_id = input("Ingrese el ID del registro a buscar: ")
                     registro = registrotiempo_controller.buscar_registro(registro_id)
@@ -255,6 +265,7 @@ def main():
                         print(registro)
                     else:
                         print("Registro no encontrado.")           
+                
                 elif sub_opcion == "4.4":
                     registro_id = input("Ingrese la ID del registro a modificar: ")
                     fecha = input("Ingrese la fecha a modificar: ")
@@ -276,6 +287,7 @@ def main():
                         print("Registro modificado exitosamente.")
                     else:
                         print("Registro no modificado.")
+                
                 elif sub_opcion == "4.5":
                     id = input("Ingrese el ID del registro a eliminar: ")
                     
@@ -283,12 +295,27 @@ def main():
                         print("Registro no eliominado.")
                     else:
                         print("Registro eliminado exitosamente.")
+                
                 elif sub_opcion == "4.6":
                     break
-                
         elif opcion == "5":
+            while True:
+                menu_exportar_datos()
+                sub_opcion = input("Seleccione una opción: ")
+                
+                if sub_opcion == "5.1":
+                    pass
+                
+                elif sub_opcion == "5.2":
+                    pass
+                
+                elif sub_opcion == "5.3":
+                    pass
+        elif opcion == "6":
             print("Saliendo del sistema...")
             break
-
+        
+        else:
+            print("Opción inválida. Intente nuevamente.")
 if __name__ == "__main__":
     main()

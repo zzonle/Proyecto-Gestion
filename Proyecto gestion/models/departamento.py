@@ -1,5 +1,3 @@
-# models/departamento.py
-
 class Departamento:
     def __init__(self, id=None, nombre="", gerente_id=None):
         self._id = id

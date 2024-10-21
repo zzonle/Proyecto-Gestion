@@ -67,3 +67,5 @@ class Empleado:
 
     def set_departamento_id(self, departamento_id):
         self._departamento_id = departamento_id
+        
+   

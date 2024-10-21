@@ -1,5 +1,7 @@
 mysql-connector-python
 pandas
+sqlalchemy
+
 
 SELECT 
     e.id AS ID,
