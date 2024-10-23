@@ -4,7 +4,8 @@ def menu_principal():
     print("2. Gestión de Departamentos")
     print("3. Gestión de Proyectos")
     print("4. Registro de Tiempo")
-    print("5. Salir del Programa")
+    print("5. Exportar Datos")
+    print("6. Salir del Programa")
     print("=======================")
 
 def menu_empleado():
