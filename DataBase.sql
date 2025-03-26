@@ -90,3 +90,21 @@ INSERT INTO `registro_tiempo` (id, fecha, horas, descripcion, empleado_id, proye
 (1, '2023-09-26', '08:00:00', 'Trabajo en el Proyecto 1', 1, 1),
 (2, '2023-09-27', '07:30:00', 'Trabajo en el Proyecto 1', 2, 1),
 (3, '2023-09-28', '06:00:00', 'Trabajo en el Proyecto 2', 2, 2);
+
+CREATE TABLE `usuario` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+);
+
+CREATE TABLE Indicadores (
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    fecha_registro DATE NOT NULL,
+    fecha_consulta DATE,
+    valor DECIMAL(10, 2),
+    usuario VARCHAR(50),
+    sitio VARCHAR(100)
+);

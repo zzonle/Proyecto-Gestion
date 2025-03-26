@@ -1,13 +1,14 @@
 def menu_principal():
     print("""\n
-                █▀▄▀█ █▀▀ █▄░█ █░█   █ █▄░█ █ █▀▀ █ █▀█
-                █░▀░█ ██▄ █░▀█ █▄█   █ █░▀█ █ █▄▄ █ █▄█ \n\n""")
+    █▀▄▀█ █▀▀ █▄░█ █░█   █ █▄░█ █ █▀▀ █ █▀█
+    █░▀░█ ██▄ █░▀█ █▄█   █ █░▀█ █ █▄▄ █ █▄█ \n\n""")
     print("1. Registro de Empleados")
     print("2. Gestión de Departamentos")
     print("3. Gestión de Proyectos")
     print("4. Registro de Tiempo")
     print("5. Exportar Datos")
-    print("6. Salir del Programa")
+    print("6. Indicadores")
+    print("7. Salir del Programa")
     print("===============================================\n")
 
 def menu_empleado():
@@ -58,3 +59,20 @@ def menu_exportar_datos():
     print("5.2 Volver al Menú Principal")
     print("===============================================\n")
 
+def menu_indicadores():
+    print("Menú de Indicadores".center(47, '='))
+    print("6.1 Info Indicadores")
+    print("6.2 Registrar Indicadores")
+    print("6.3 Volver al Menú Principal")
+    print("===============================================\n")
+
+def menu_info_indicadores():
+    print("Información de Indicadores".center(47, '='))
+    print("1. Unidad de Fomento (UF)")
+    print("2. Índice de valor Promedio (IVP)")
+    print("3. Índice de Precio al Consumidor (IPC)")
+    print("4. Unidad Tributaria Mensual (UTM)")
+    print("5. Dólar Observado")
+    print("6. Euro")
+    print("7. Salir")
+    print("===============================================\n")
